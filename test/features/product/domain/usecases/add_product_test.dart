@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:myapp/core/failure/failure.dart';
 import 'package:myapp/features/product/domain/entities/product.dart';
-import 'package:myapp/features/product/use_case/add.dart';
+import 'package:myapp/features/product/domain/use_case/add.dart';
 import '../../../../product_repository_mock.mocks.dart';
 
 void main() {
@@ -42,13 +42,13 @@ void main() {
     // Arrange
     const failure = ServerFailure(message: 'Unable to add product');
     when(mockProductRepository.addProduct(any))
-        .thenAnswer((_) async => Left(failure));
+        .thenAnswer((_) async => const Left(failure));
 
     // Act
     final result = await useCase(product);
 
     // Assert
-    expect(result, Left(failure));
+    expect(result, const Left(failure));
     verify(mockProductRepository.addProduct(product));
     verifyNoMoreInteractions(mockProductRepository);
   });

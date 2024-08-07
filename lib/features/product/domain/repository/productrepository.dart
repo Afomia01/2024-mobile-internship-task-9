@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/failure/failure.dart';
-import '../domain/entities/product.dart';
+import '../../../../core/failure/failure.dart';
+import '../entities/product.dart';
 
 abstract class ProductRepository {
   List<Product> getProduct(String params);

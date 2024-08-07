@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:myapp/core/failure/failure.dart' as _i6;
 import 'package:myapp/features/product/domain/entities/product.dart' as _i4;
-import 'package:myapp/features/product/repository/productrepository.dart' as _i3;
+import 'package:myapp/features/product/domain/repository/productrepository.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

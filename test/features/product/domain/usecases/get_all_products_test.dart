@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:myapp/core/failure/failure.dart';
 import 'package:myapp/features/product/domain/entities/product.dart';
-import 'package:myapp/features/product/use_case/getAllProducts.dart';
+import 'package:myapp/features/product/domain/use_case/getAllProducts.dart';
 import '../../../../product_repository_mock.mocks.dart';
 
 void main() {
@@ -39,13 +39,13 @@ void main() {
     // Arrange
     const failure = ServerFailure(message: 'Unable to fetch products');
     when(mockProductRepository.getAllProducts())
-        .thenAnswer((_) async => Left(failure));
+        .thenAnswer((_) async => const Left(failure));
 
     // Act
     final result = await useCase();
 
     // Assert
-    expect(result, Left(failure));
+    expect(result, const Left(failure));
     verify(mockProductRepository.getAllProducts());
     verifyNoMoreInteractions(mockProductRepository);
   });

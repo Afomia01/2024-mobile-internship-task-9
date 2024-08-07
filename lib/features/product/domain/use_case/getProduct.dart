@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import '../../../core/failure/failure.dart';
-import '../../../core/use_case/use_case.dart';
-import '../domain/entities/product.dart';
+import '../../../../core/failure/failure.dart';
+import '../../../../core/use_case/use_case.dart';
+import '../entities/product.dart';
 import '../repository/productrepository.dart';
 
 class ViewProduct extends UseCase<Future<Either<Failure, Product>>, String> {

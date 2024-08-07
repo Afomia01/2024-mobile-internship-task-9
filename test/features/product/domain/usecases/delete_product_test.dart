@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:myapp/core/failure/failure.dart'; // Ensure this path is correct
-import 'package:myapp/features/product/use_case/delete.dart';
+import 'package:myapp/features/product/domain/use_case/delete.dart';
 
 import '../../../../product_repository_mock.mocks.dart';
 
@@ -36,13 +36,13 @@ void main() {
     // Arrange
     const failure = ServerFailure(message: 'Unable to delete product');
     when(mockProductRepository.deleteProduct(any))
-        .thenAnswer((_) async => Left(failure));
+        .thenAnswer((_) async => const Left(failure));
 
     // Act
     final result = await useCase(params);
 
     // Assert
-    expect(result, Left(failure));
+    expect(result, const Left(failure));
     verify(mockProductRepository.deleteProduct(params.id));
     verifyNoMoreInteractions(mockProductRepository);
   });

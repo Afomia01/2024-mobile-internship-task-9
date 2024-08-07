@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import '../../../core/failure/failure.dart';
-import '../../../core/use_case/use_case.dart';
+import '../../../../core/failure/failure.dart';
+import '../../../../core/use_case/use_case.dart';
 import '../repository/productrepository.dart';
 
 // Define a class to represent the parameters needed for deletion

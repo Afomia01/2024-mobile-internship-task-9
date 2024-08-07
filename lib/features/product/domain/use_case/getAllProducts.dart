@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import '../../../core/failure/failure.dart';
-import '../../../core/use_case/no_param_use_case.dart';
-import '../domain/entities/product.dart';
+import '../../../../core/failure/failure.dart';
+import '../../../../core/use_case/no_param_use_case.dart';
+import '../entities/product.dart';
 import '../repository/productrepository.dart';
 
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2217369299.
