@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:myapp/core/failure/failure.dart';
-import 'package:myapp/core/use_case/use_case.dart';
-import 'package:myapp/features/product/repository/productrepository.dart';
+import '../../../core/failure/failure.dart';
+import '../../../core/use_case/use_case.dart';
+import '../repository/productrepository.dart';
 
 // Define a class to represent the parameters needed for deletion
 class DeleteProductParams {

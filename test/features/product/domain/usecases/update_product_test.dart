@@ -19,7 +19,7 @@ void main() {
   final product = Product(
     id: 1,
     name: 'Updated Product',
-    catagory: 'Sneakers',
+    image: 'assets/boot.jpg',
     description: 'Updated Description',
     price: 250,
   );
@@ -27,20 +27,20 @@ void main() {
   test('should update product through the repository', () async {
     // Arrange
     when(mockProductRepository.updateProduct(any))
-        .thenAnswer((_) async => Right(null));
+        .thenAnswer((_) async => const Right(null));
 
     // Act
     final result = await useCase(product);
 
     // Assert
-    expect(result, Right(null));
+    expect(result, const Right(null));
     verify(mockProductRepository.updateProduct(product));
     verifyNoMoreInteractions(mockProductRepository);
   });
 
   test('should return failure when repository fails to update product', () async {
     // Arrange
-    final failure = ServerFailure(message: 'Unable to update product');
+    const failure = ServerFailure(message: 'Unable to update product');
     when(mockProductRepository.updateProduct(any))
         .thenAnswer((_) async => Left(failure));
 

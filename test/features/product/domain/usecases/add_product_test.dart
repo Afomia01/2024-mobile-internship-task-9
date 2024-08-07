@@ -19,7 +19,7 @@ void main() {
   final product = Product(
     id: 1,
     name: 'New Product',
-    catagory: 'Sneakers',
+    image: 'assets/boot.jpg',
     description: 'Comfortable',
     price: 100,
   );
@@ -40,7 +40,7 @@ void main() {
 
   test('should return failure when repository fails to add product', () async {
     // Arrange
-    final failure = ServerFailure(message: 'Unable to add product');
+    const failure = ServerFailure(message: 'Unable to add product');
     when(mockProductRepository.addProduct(any))
         .thenAnswer((_) async => Left(failure));
 

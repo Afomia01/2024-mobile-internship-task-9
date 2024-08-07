@@ -15,13 +15,13 @@ void main() {
     useCase = ViewProduct(mockProductRepository);
   });
 
-  final productId = '1';
+  const productId = '1';
   final product = Product(
     id: 1,
     name: 'Test Product',
-    catagory: 'Sneaker',
     description: 'Comfy',
     price: 200.0,
+    image: 'assets/boot.jpg'
   );
 
   test('should get product by id from the repository', () async {
@@ -40,7 +40,7 @@ void main() {
 
   test('should return failure when repository fails to get product', () async {
     // Arrange
-    final failure = ServerFailure(message: 'Unable to get product');
+    const failure = ServerFailure(message: 'Unable to get product');
     when(mockProductRepository.getProductById(productId))
         .thenAnswer((_) async => Left(failure));
 

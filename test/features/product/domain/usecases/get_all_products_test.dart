@@ -17,8 +17,8 @@ void main() {
   });
 
   final productList = [
-    Product(id: 1, name: 'Test Product 1', catagory: 'Sneakers', description: 'Comfy', price: 200),
-    Product(id: 2, name: 'Test Product 2', catagory: 'Boots', description: 'Stylish', price: 150),
+    Product(id: 1, name: 'Test Product 1',  description: 'Comfy', price: 200, image: 'assets/boot.jpg'),
+    Product(id: 2, name: 'Test Product 2',  description: 'Stylish', price: 150, image: 'assets/boot.jpg'),
   ];
 
   test('should get all products from the repository', () async {
@@ -37,7 +37,7 @@ void main() {
 
   test('should return failure when repository fails to get products', () async {
     // Arrange
-    final failure = ServerFailure(message: 'Unable to fetch products');
+    const failure = ServerFailure(message: 'Unable to fetch products');
     when(mockProductRepository.getAllProducts())
         .thenAnswer((_) async => Left(failure));
 
