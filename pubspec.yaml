@@ -51,6 +51,7 @@ dependencies:
   intl: 
   uuid:
   internet_connection_checker:
+  http:
 
 
 dev_dependencies:

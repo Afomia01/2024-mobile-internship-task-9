@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:http/http.dart' as http;
 import 'package:myapp/core/error/exception.dart';
 import 'package:myapp/features/product/data/datasource/remote_data_source.dart';
-import '../../../../helper/dummy_data.dart';
-import '../datasource/remote_data_source_test.mocks.dart'; // Import the dummy data
-
-// Mock class for http.Client
+import '../../../../helper/dummy_data.dart'; // Import the dummy data
+import 'remote_data_source_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
@@ -21,13 +19,13 @@ void main() {
   });
 
   group('getAllProducts', () {
-    test('should perform a GET request on a URL', () async {
+    test('should return a list of ProductModels when the response code is 200',
+        () async {
       // Arrange
       final uri = Uri.parse(RemoteDataSourceImpl.baseUrl);
-      when(mockHttpClient.get(any)).thenAnswer(
+      when(mockHttpClient.get(uri)).thenAnswer(
         (_) async => http.Response(
-          json.encode(
-              dummyProducts.map((product) => product.toJson()).toList()),
+          json.encode(dummy_data),
           200,
         ),
       );
@@ -36,11 +34,11 @@ void main() {
       final result = await dataSource.getAllProducts();
 
       // Assert
-      verify(mockHttpClient.get(uri));
       expect(result, equals(dummyProducts));
     });
 
-    test('should throw a ServerException for non-200 response', () async {
+    test('should throw a ServerException when the response code is not 200',
+        () async {
       // Arrange
       final uri = Uri.parse(RemoteDataSourceImpl.baseUrl);
       when(mockHttpClient.get(uri)).thenAnswer(
