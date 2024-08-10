@@ -17,9 +17,9 @@ void main() {
   });
 
   final product = Product(
-    id: 1,
+    id: '1',
     name: 'Updated Product',
-    image: 'assets/boot.jpg',
+    imageUrl: 'assets/boot.jpg',
     description: 'Updated Description',
     price: 250,
   );

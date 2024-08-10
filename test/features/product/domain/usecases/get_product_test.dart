@@ -17,11 +17,11 @@ void main() {
 
   const productId = '1';
   final product = Product(
-    id: 1,
+    id: '1',
     name: 'Test Product',
     description: 'Comfy',
     price: 200.0,
-    image: 'assets/boot.jpg'
+    imageUrl: 'assets/boot.jpg'
   );
 
   test('should get product by id from the repository', () async {

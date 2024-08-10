@@ -1,29 +1,27 @@
-// product_model.dart
-
 import 'package:equatable/equatable.dart';
 
 class ProductModel extends Equatable {
-  final int id;
+  final String id;
   final String name;
   final String description;
   final double price;
-  final String image;
+  final String imageUrl;
 
   ProductModel({
     required this.id,
     required this.name,
     required this.description,
     required this.price,
-    required this.image,
+    required this.imageUrl,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      price: json['price'],
-      image: json['image'],
+      id: json['id'] ?? '',  // Provide default values if null
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      price: (json['price'] ?? 0.0).toDouble(),  // Ensure price is a double
+      imageUrl: json['image'] ?? '',  // Match key with toJson
     );
   }
 
@@ -33,11 +31,10 @@ class ProductModel extends Equatable {
       'name': name,
       'description': description,
       'price': price,
-      'image': image,
+      'image': imageUrl,  // Match key with fromJson
     };
   }
   
   @override
-  // TODO: implement props
-  List<Object?> get props => [id, name, description, price, image];
+  List<Object?> get props => [id, name, description, price, imageUrl];
 }

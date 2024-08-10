@@ -6,18 +6,18 @@ import 'package:myapp/features/product/data/model/product_model.dart';
 
 final dummyProducts = [
   ProductModel(
-    id: 1,
+    id: '1',
     name: 'Product 1',
     description: 'Description 1',
     price: 9.99,
-    image: 'http://example.com/image1.jpg',
+    imageUrl: 'http://example.com/image1.jpg',
   ),
   ProductModel(
-    id: 2,
+    id: '2',
     name: 'Product 2',
     description: 'Description 2',
     price: 19.99,
-    image: 'http://example.com/image2.jpg',
+    imageUrl: 'http://example.com/image2.jpg',
   ),
 ];
 
