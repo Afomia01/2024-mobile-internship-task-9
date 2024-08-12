@@ -1,6 +1,6 @@
-#Task Progress 
-##An Ecommerce Flutter Mobile Application built for the 2024 A2SV Summer Internship in the mobile team.
-###Table of contents
+- # Task Progress 
+- ## An Ecommerce Flutter Mobile Application built for the 2024 A2SV Summer Internship in the mobile team.
+- ### Table of contents
 - [Task 9: Refactor Domain Layer](#task-9-refactor-domain-layer)
 - [Task 10: Data Layer Overview](#task-10-data-layer-overview)
 - [Task 11: Contracts of Data Source](#task-11-contracts-of-data-source)
