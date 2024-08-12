@@ -1,10 +1,12 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/features/product/data/datasource/local_data_source.dart';
 import 'package:myapp/features/product/data/model/product_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'local_data_source_test.mocks.dart'; // Import the generated mocks
 
 @GenerateMocks([SharedPreferences])
@@ -21,8 +23,8 @@ void main() {
   });
 
   final List<ProductModel> tProductList = [
-    ProductModel(id: '1', name: 'PC', description: 'long description', price: 123, imageUrl: 'image.png'),
-    ProductModel(id: '2', name: 'Laptop', description: 'short description', price: 456, imageUrl: 'image2.png'),
+    const ProductModel(id: '1', name: 'PC', description: 'long description', price: 123, imageUrl: 'image.png'),
+    const ProductModel(id: '2', name: 'Laptop', description: 'short description', price: 456, imageUrl: 'image2.png'),
   ];
 
   group('getAllProducts', () {
@@ -90,7 +92,7 @@ void main() {
   group('addProduct', () {
     test('should add a new product and return it', () async {
       // Arrange
-      final newProduct = ProductModel(id: '3', name: 'Tablet', description: 'new tablet', price: 789, imageUrl: 'tablet.png');
+      const newProduct = ProductModel(id: '3', name: 'Tablet', description: 'new tablet', price: 789, imageUrl: 'tablet.png');
       final jsonList = tProductList.map((product) => product.toJson()).toList();
       when(mockSharedPreferences.getString(cachedProductsKey)).thenReturn(json.encode(jsonList));
 
@@ -109,7 +111,7 @@ void main() {
 
     test('should add a new product when there is no cached data', () async {
       // Arrange
-      final newProduct = ProductModel(id: '3', name: 'Tablet', description: 'new tablet', price: 789, imageUrl: 'tablet.png');
+      const newProduct = ProductModel(id: '3', name: 'Tablet', description: 'new tablet', price: 789, imageUrl: 'tablet.png');
       when(mockSharedPreferences.getString(cachedProductsKey)).thenReturn(null);
 
       // Act
@@ -129,7 +131,7 @@ void main() {
   group('updateProduct', () {
     test('should update an existing product and return it', () async {
       // Arrange
-      final updatedProduct = ProductModel(id: '1', name: 'Updated PC', description: 'updated description', price: 1234, imageUrl: 'updated_image.png');
+      const updatedProduct = ProductModel(id: '1', name: 'Updated PC', description: 'updated description', price: 1234, imageUrl: 'updated_image.png');
       final jsonList = tProductList.map((product) => product.toJson()).toList();
       when(mockSharedPreferences.getString(cachedProductsKey)).thenReturn(json.encode(jsonList));
 
@@ -147,7 +149,7 @@ void main() {
 
     test('should throw an exception when the product ID is not found', () async {
       // Arrange
-      final updatedProduct = ProductModel(id: '999', name: 'Non-existent Product', description: 'description', price: 0, imageUrl: 'image.png');
+      const updatedProduct = ProductModel(id: '999', name: 'Non-existent Product', description: 'description', price: 0, imageUrl: 'image.png');
       final jsonList = tProductList.map((product) => product.toJson()).toList();
       when(mockSharedPreferences.getString(cachedProductsKey)).thenReturn(json.encode(jsonList));
 
@@ -160,7 +162,7 @@ void main() {
 
     test('should throw an exception when there are no cached products', () async {
       // Arrange
-      final updatedProduct = ProductModel(id: '1', name: 'Updated PC', description: 'updated description', price: 1234, imageUrl: 'updated_image.png');
+      const updatedProduct = ProductModel(id: '1', name: 'Updated PC', description: 'updated description', price: 1234, imageUrl: 'updated_image.png');
       when(mockSharedPreferences.getString(cachedProductsKey)).thenReturn(null);
 
       // Act

@@ -7,7 +7,7 @@ class ProductModel extends Equatable {
   final double price;
   final String imageUrl;
 
-  ProductModel({
+  const ProductModel({
     required this.id,
     required this.name,
     required this.description,

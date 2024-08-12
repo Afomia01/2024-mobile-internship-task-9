@@ -54,6 +54,7 @@ dependencies:
   http:
 
 
+  http_parser: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

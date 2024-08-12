@@ -1,16 +1,15 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:myapp/core/error/exception.dart';
-import 'package:myapp/features/product/data/datasource/local_data_source.dart';
-import 'package:myapp/features/product/data/datasource/remote_data_source.dart';
-import 'package:myapp/features/product/data/model/product_model.dart';
-import 'package:myapp/features/product/domain/entities/product.dart';
 
-
+import '../../../../core/error/exception.dart';
 import '../../../../core/failure/failure.dart';
 import '../../../../core/platform/network_info.dart';
+import '../../domain/entities/product.dart';
 import '../../domain/repository/productrepository.dart';
+import '../datasource/local_data_source.dart';
+import '../datasource/remote_data_source.dart';
+import '../model/product_model.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final RemoteDataSource remoteDataSource;
@@ -31,14 +30,14 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.cacheProducts(remoteProducts);
         return Right(remoteProducts.cast<Product>());
       } on ServerException {
-        return Left(ServerFailure(message: 'Failed to fetch products from server.'));
+        return const Left(ServerFailure(message: 'Failed to fetch products from server.'));
       }
     } else {
       try {
         final localProducts = await localDataSource.getAllProducts();
         return Right(localProducts.cast<Product>());
       } on CacheException {
-        return Left(CacheFailure(message: 'No cached data available.'));
+        return const Left(CacheFailure(message: 'No cached data available.'));
       }
     }
   }
@@ -59,7 +58,7 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.addProduct(remoteProduct);
         return Right(remoteProduct as Product);
       } on ServerException {
-        return Left(ServerFailure(message: 'Failed to add product to server.'));
+        return const Left(ServerFailure(message: 'Failed to add product to server.'));
       }
     } else {
       return Left(NetworkFailure(message: 'No internet connection.'));
@@ -82,7 +81,7 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.updateProduct(productModel);
         return const Right(null);
       } on ServerException {
-        return Left(ServerFailure(message: 'Failed to update product on server.'));
+        return const Left(ServerFailure(message: 'Failed to update product on server.'));
       }
     } else {
       try {
@@ -96,7 +95,7 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.updateProduct(productModel);
         return const Right(null);
       } on CacheException {
-        return Left(CacheFailure(message: 'Failed to update product locally.'));
+        return const Left(CacheFailure(message: 'Failed to update product locally.'));
       }
     }
   }
@@ -109,14 +108,14 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.deleteProduct(id);
         return const Right(null);
       } on ServerException {
-        return Left(ServerFailure(message: 'Failed to delete product from server.'));
+        return const Left(ServerFailure(message: 'Failed to delete product from server.'));
       }
     } else {
       try {
         localDataSource.deleteProduct(id);
         return const Right(null);
       } on CacheException {
-        return Left(CacheFailure(message: 'Failed to delete product locally.'));
+        return const Left(CacheFailure(message: 'Failed to delete product locally.'));
       }
     }
   }
@@ -129,14 +128,14 @@ class ProductRepositoryImpl implements ProductRepository {
         localDataSource.addProduct(remoteProduct);
         return Right(remoteProduct as Product);
       } on ServerException {
-        return Left(ServerFailure(message: 'Failed to fetch product from server.'));
+        return const Left(ServerFailure(message: 'Failed to fetch product from server.'));
       }
     } else {
       try {
         final localProduct = await localDataSource.getProductById(productId);
         return Right(localProduct as Product);
       } on CacheException {
-        return Left(CacheFailure(message: 'Failed to fetch product locally.'));
+        return const Left(CacheFailure(message: 'Failed to fetch product locally.'));
       }
     }
   }

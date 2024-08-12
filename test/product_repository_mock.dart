@@ -1,11 +1,12 @@
-import 'package:mockito/annotations.dart';
-import 'package:myapp/features/product/domain/repository/productrepository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:myapp/core/failure/failure.dart';
 import 'package:myapp/features/product/domain/entities/product.dart';
+import 'package:myapp/features/product/domain/repository/productrepository.dart';
 import 'package:myapp/features/product/domain/use_case/getAllProducts.dart';
+
 import 'product_repository_mock.mocks.dart'; // Import the mock
 
 @GenerateMocks([ProductRepository])
@@ -42,13 +43,13 @@ void main() {
   test('should return failure when unable to retrieve products', () async {
     // Arrange
     when(mockProductRepository.getAllProducts())
-        .thenAnswer((_) async => Left(ServerFailure(message: 'Server error occurred.')));
+        .thenAnswer((_) async => const Left(ServerFailure(message: 'Server error occurred.')));
 
     // Act
     final result = await useCase();
 
     // Assert
-    expect(result, Left(ServerFailure(message: 'Server error occurred.')));
+    expect(result, const Left(ServerFailure(message: 'Server error occurred.')));
     verify(mockProductRepository.getAllProducts());
     verifyNoMoreInteractions(mockProductRepository);
   });

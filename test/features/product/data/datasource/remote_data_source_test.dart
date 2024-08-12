@@ -1,10 +1,12 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:http/http.dart' as http;
 import 'package:myapp/core/error/exception.dart';
 import 'package:myapp/features/product/data/datasource/remote_data_source.dart';
+
 import '../../../../helper/dummy_data.dart'; // Import the dummy data
 import 'remote_data_source_test.mocks.dart';
 
