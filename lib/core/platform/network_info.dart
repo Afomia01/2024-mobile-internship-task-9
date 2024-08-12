@@ -1,5 +1,4 @@
-// network_info.dart
-import 'package:dartz/dartz.dart';
+
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 abstract class NetworkInfo {

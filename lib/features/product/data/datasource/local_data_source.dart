@@ -8,6 +8,8 @@ abstract class LocalDataSource {
   Future<void> updateProduct(ProductModel product);
   Future<void> deleteProduct(String id);
   Future<ProductModel> getProductById(String productId);
+
+  void cacheProducts(List<ProductModel> remoteProducts) {}
 }
 
 const String cachedProductsKey = 'CACHED_PRODUCTS';
@@ -95,5 +97,10 @@ Future<void> deleteProduct(String id) async {
     throw Exception('No cached products found');
   }
 }
+
+  @override
+  void cacheProducts(List<ProductModel> remoteProducts) {
+    // TODO: implement cacheProducts
+  }
 
 }
