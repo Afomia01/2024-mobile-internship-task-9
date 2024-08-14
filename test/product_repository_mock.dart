@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockProductRepository = MockProductRepository();
-    useCase = GetAllProducts(mockProductRepository);
+    useCase = GetAllProducts(mockProductRepository                                                                                                                        );
   });
 
   final tProductList = [

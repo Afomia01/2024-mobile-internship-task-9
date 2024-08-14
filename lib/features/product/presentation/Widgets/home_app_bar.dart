@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'This is my home page for APP in flutter',
+                      'Hello, Yohannes',
                       style: TextStyle(color: Colors.black),
                     ),
                   ],

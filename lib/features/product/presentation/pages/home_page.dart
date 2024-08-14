@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../data/repository/product_repository_impl.dart';
-import '../../domain/entities/product.dart';
-import '../../domain/use_case/getAllProducts.dart';
-import '../Widgets/home_app_bar.dart';
-import '../Widgets/item_card.dart';
-import '../home_page/home_page_bloc.dart';
-
-const Product exampleProduct = Product(
-  id: '1',
-  name: 'Example Product',
-  description: 'This is an example product',
-  price: 35,
-  imageUrl: 'assets/boot.jpg',
-);
+import 'package:myapp/features/product/domain/repository/productrepository.dart';
+import 'package:myapp/features/product/domain/use_case/getAllProducts.dart';
+import 'package:myapp/features/product/presentation/Widgets/home_app_bar.dart';
+import 'package:myapp/features/product/presentation/Widgets/item_card.dart';
+import 'package:myapp/features/product/presentation/home_page/home_page_bloc.dart';
 
 class HomePage extends StatelessWidget {
-  final ProductRepositoryImpl repository;
-  const HomePage(this.repository, {super.key});
+  final ProductRepository repository;
+
+  const HomePage(this.repository, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomePageBloc(
-        getAllProductsUseCase:
-            GetAllProducts(repository), // Pass the repository here
+        getAllProductsUseCase: GetAllProducts(repository),
       )..add(FetchAllProducts()),
       child: Scaffold(
         appBar: const CustomAppBar(),
