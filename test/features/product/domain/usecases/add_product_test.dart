@@ -16,7 +16,7 @@ void main() {
     useCase = addProduct(mockProductRepository);
   });
 
-  final product = Product(
+  const product = Product(
     id: '1',
     name: 'New Product',
     imageUrl: 'assets/boot.jpg',
@@ -27,13 +27,13 @@ void main() {
   test('should add product through the repository', () async {
     // Arrange
     when(mockProductRepository.addProduct(any))
-        .thenAnswer((_) async => Right(product));
+        .thenAnswer((_) async => const Right(product));
 
     // Act
     final result = await useCase(product);
 
     // Assert
-    expect(result, Right(product));
+    expect(result, const Right(product));
     verify(mockProductRepository.addProduct(product));
     verifyNoMoreInteractions(mockProductRepository);
   });

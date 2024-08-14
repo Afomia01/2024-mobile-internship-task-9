@@ -16,7 +16,7 @@ void main() {
     useCase = UpdateProduct(mockProductRepository);
   });
 
-  final product = Product(
+  const product = Product(
     id: '1',
     name: 'Updated Product',
     imageUrl: 'assets/boot.jpg',

@@ -16,7 +16,7 @@ void main() {
   });
 
   const productId = '1';
-  final product = Product(
+  const product = Product(
     id: '1',
     name: 'Test Product',
     description: 'Comfy',
@@ -27,13 +27,13 @@ void main() {
   test('should get product by id from the repository', () async {
     // Arrange
     when(mockProductRepository.getProductById(productId))
-        .thenAnswer((_) async => Right(product));
+        .thenAnswer((_) async => const Right(product));
 
     // Act
     final result = await useCase(productId);
 
     // Assert
-    expect(result, Right(product));
+    expect(result, const Right(product));
     verify(mockProductRepository.getProductById(productId));
     verifyNoMoreInteractions(mockProductRepository);
   });

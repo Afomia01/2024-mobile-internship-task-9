@@ -22,8 +22,8 @@ void main() {
   });
 
   final tProductList = [
-    Product(id: '1', name: 'Test Product 1', description: 'Test Description 1', price: 9.99, imageUrl: 'image1.jpg'),
-    Product(id: '2', name: 'Test Product 2', description: 'Test Description 2', price: 19.99, imageUrl: 'image2.jpg'),
+    const Product(id: '1', name: 'Test Product 1', description: 'Test Description 1', price: 9.99, imageUrl: 'image1.jpg'),
+    const Product(id: '2', name: 'Test Product 2', description: 'Test Description 2', price: 19.99, imageUrl: 'image2.jpg'),
   ];
 
   test('should get all products from the repository', () async {
