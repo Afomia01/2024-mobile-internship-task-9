@@ -66,39 +66,39 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<Either<Failure, void>> updateProduct(Product product, {File? imageFile}) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final productModel = ProductModel(
-          id: product.id,
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          imageUrl: product.imageUrl,
-        );
+Future<Either<Failure, void>> updateProduct(Product product) async {
+  if (await networkInfo.isConnected) {
+    try {
+      final productModel = ProductModel(
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl, // Keep the existing image URL
+      );
 
-        await remoteDataSource.updateProduct(productModel);
-        localDataSource.updateProduct(productModel);
-        return const Right(null);
-      } on ServerException {
-        return const Left(ServerFailure(message: 'Failed to update product on server.'));
-      }
-    } else {
-      try {
-        final productModel = ProductModel(
-          id: product.id,
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          imageUrl: product.imageUrl,
-        );
-        localDataSource.updateProduct(productModel);
-        return const Right(null);
-      } on CacheException {
-        return const Left(CacheFailure(message: 'Failed to update product locally.'));
-      }
+      await remoteDataSource.updateProduct(productModel);
+      localDataSource.updateProduct(productModel);
+      return const Right(null);
+    } on ServerException {
+      return const Left(ServerFailure(message: 'Failed to update product on server.'));
+    }
+  } else {
+    try {
+      final productModel = ProductModel(
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl, 
+      );
+      localDataSource.updateProduct(productModel);
+      return const Right(null);
+    } on CacheException {
+      return const Left(CacheFailure(message: 'Failed to update product locally.'));
     }
   }
+}
 
   @override
   Future<Either<Failure, void>> deleteProduct(String id) async {

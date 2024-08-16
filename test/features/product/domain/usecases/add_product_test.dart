@@ -8,12 +8,12 @@ import 'package:myapp/features/product/domain/use_case/add.dart';
 import '../../../../product_repository_mock.mocks.dart';
 
 void main() {
-  late addProduct useCase;
+  late AddProductUseCase useCase;
   late MockProductRepository mockProductRepository;
 
   setUp(() {
     mockProductRepository = MockProductRepository();
-    useCase = addProduct(mockProductRepository);
+    useCase = AddProductUseCase(mockProductRepository);
   });
 
   const product = Product(

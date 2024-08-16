@@ -7,13 +7,22 @@ import '../repository/productrepository.dart';
 // Define a generic UseCase interface (if not already defined in your project)
 
 // Corrected class for adding a product task
-class addProduct extends UseCase<Future<Either<Failure, void>>, Product> {
+// Rename class from addProduct to AddProductUseCase
+class AddProductUseCase extends UseCase<Future<Either<Failure, Product>>, Product> {
   final ProductRepository repository;
 
-  addProduct(this.repository);
-  
+  AddProductUseCase(this.repository);
+
   @override
-  Future<Either<Failure, Product>> call(Product product)async {
+  Future<Either<Failure, Product>> call(Product product) async {
     return await repository.addProduct(product);
   }
 }
+class AddProductParams {
+  final Product product;
+  final String imagePath;
+
+  AddProductParams(this.product, this.imagePath);
+}
+
+
