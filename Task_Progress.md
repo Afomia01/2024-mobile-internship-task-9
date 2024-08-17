@@ -9,6 +9,10 @@
 - [Task 14: Local Data Source](#task-14-local-data-source)
 - [Task 15: Remote Data Source](#task-15-remote-data-source)
 - [Task 16: Revise and Refactor](#task-16-revise-and-refactor)
+- [Task 17: Implement Bloc](#task-17-implement-bloc)
+- [Task 18: Dependency Injection](#task-18-dependncy-injection)
+- [Task 19: Implement User interface](#task-19-implement-user-interface)
+- [Task-20: Consume Bloc for eCommerce](#task-20-Consume-Bloc-for-eCommerce)
 
 ## task-9: Refactor Domain Layer
 - ✔️Create entities for the products in the eCommerce Mobile App.
@@ -44,9 +48,33 @@ Created Product_model.dart file and wrote test for it.
 ## task 15- Remote Data Source
 - ✔️Implement ProductRemoteDatasourceImpl class along with tests
 ## task 16 - Revise and Refactor
-- Refactored codebase with reduced code duplication and improved organization.
-- Updated components of the Ecommerce app that utilize the new code modules and adhere to the principles of code organization and reusability.
+- ✔️Refactored codebase with reduced code duplication and improved organization.
+- ✔️Updated components of the Ecommerce app that utilize the new code modules and adhere to the principles of code organization and reusability.
 - commit Link - https://github.com/Afomia01/2024-mobile-internship-task-9/commit/63ed3f09473290459207d81f5906911263cb3f7d
+## task 17- Implement Bloc
+- ✔️Created Event Classes
+- ✔️created state
+- ✔️created bloc
+## task 18 - Dependncy injection
+- ✔️Defined a singleton instance of the GetIt service locator. 
+- ✔️Registerd all necessary dependencies 
+## task 19 - Implement User Interface
+- ✔️Building the UI Structure
+- ✔️Designing the UI layout using Placeholder widgets.
+- ✔️Displaying Different States
+- ✔️Handling UI states (Empty, Loading, Error, Loaded) using BlocBuilder.
+- ✔️Handling User Input
+- ✔️R✔efining UI Components
+- ✔️Createing custom Widgets
 
+## task 20- Consume Bloc for eCommerce
+- ✔️Design a screen that allows users to input product details and create a new product.
+- ✔️Consume the appropriate bloc method to handle the product creation process.
+- ✔️Retrieve All Products Page
+- ✔️Product Detail Page
+- ✔️Update Product Page
+- ✔️Deleting Product 
+- ✔️Navigation and Routing:
 
+## commit Link - https://github.com/Afomia01/2024-mobile-internship-task-9/commit/bbe4ec2a867a371ff0c1bcaa0f546dab7d647c61
 
